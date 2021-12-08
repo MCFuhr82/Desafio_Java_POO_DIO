@@ -2,35 +2,16 @@ package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
 
-public class Mentoria {
+public class Mentoria extends Conteudo{ //HERANÇA. Usando extends, a classe Mentoria herda os atributos e metodos da classe abstrata Conteudo.
 
-    private String titulo; //usando modificadores de acesso private para atributos. ENCAPSULAMENTO
-    private String descricao;
-    private LocalDate data;
+    private LocalDate data; //usando modificadores de acesso private para atributos. ENCAPSULAMENTO
 
     public Mentoria() {
     }
 
     public Mentoria(String titulo, String descricao, LocalDate data) {
-        this.titulo = titulo;
-        this.descricao = descricao;
+        super(titulo, descricao);
         this.data = data;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public LocalDate getData() {
@@ -44,9 +25,14 @@ public class Mentoria {
     @Override
     public String toString() {
         return "Mentoria{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
+                "titulo='" + getTitulo() + '\'' +
+                ", descricao='" + getDescricao() + '\'' +
                 ", data=" + data +
                 '}';
+    }
+
+    @Override //POLIMORFISMO. O mesmo método retorna um valor diferente, de acordo com a lógico implantada na classe.
+    public double calcularXP() {
+        return XP_PADRAO + 20d;
     }
 }

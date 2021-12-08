@@ -1,34 +1,20 @@
 package br.com.dio.desafio.dominio;
 
-public class Curso {
+public class Curso extends Conteudo{ //HERANÇA. Usando extends, a classe Curso herda os atributos e metodos da classe abstrata Conteudo.
 
-    private String titulo; //usando modificadores de acesso private para atributos. ENCAPSULAMENTO
-    private String descricao;
-    private int cargaHoraria;
+    private int cargaHoraria; //usando modificadores de acesso private para atributos. ENCAPSULAMENTO
 
     public Curso() {
     }
 
     public Curso(String titulo, String descricao, int cargaHoraria) {
-        this.titulo = titulo;
-        this.descricao = descricao;
+        super(titulo, descricao);
         this.cargaHoraria = cargaHoraria;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    @Override //POLIMORFISMO. O mesmo método retorna um valor diferente, de acordo com a lógico implantada na classe.
+    public double calcularXP() {
+        return XP_PADRAO * cargaHoraria;
     }
 
     public int getCargaHoraria() {
@@ -42,8 +28,8 @@ public class Curso {
     @Override
     public String toString() {
         return "Curso{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
+                "titulo='" + getTitulo() + '\'' +
+                ", descricao='" + getDescricao() + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
                 '}';
     }
